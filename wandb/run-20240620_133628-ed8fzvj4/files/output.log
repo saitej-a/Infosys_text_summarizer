@@ -1,0 +1,25 @@
+
+  0%|          | 0/15000 [00:00<?, ?it/s]C:\Users\ankam\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\transformers\training_args.py:1474: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+
+  0%|          | 0/3750 [00:15<?, ?it/s]
+
+  0%|          | 0/10000 [00:05<?, ?it/s]
+
+  0%|          | 0/7500 [00:04<?, ?it/s]
+  0%|          | 0/7500 [00:06<?, ?it/s]
+
+  0%|          | 0/2500 [00:00<?, ?it/s]C:\Users\ankam\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\transformers\training_args.py:1474: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+  0%|          | 0/7500 [01:59<?, ?it/s]
+
+  0%|          | 0/3333 [00:05<?, ?it/s]
+  0%|          | 0/3333 [00:04<?, ?it/s]
+C:\Users\ankam\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\transformers\training_args.py:1474: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+C:\Users\ankam\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\transformers\training_args.py:1474: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+
+  0%|          | 1/5000 [00:42<59:25:42, 42.80s/it]C:\Users\ankam\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\transformers\training_args.py:1474: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+  0%|          | 0/3333 [04:44<?, ?it/s]

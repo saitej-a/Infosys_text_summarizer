@@ -1,0 +1,44 @@
+{
+    "os": "Windows-10-10.0.22631-SP0",
+    "python": "3.11.8",
+    "heartbeatAt": "2024-06-20T08:06:30.597054",
+    "startedAt": "2024-06-20T08:06:28.921186",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "<python with no main file>",
+    "codePathLocal": null,
+    "git": {
+        "remote": "https://github.com/saitej-a/Infosys_text_summarizer.git",
+        "commit": "057f41ee848b2bfc1422f0f700f835c2e6885018"
+    },
+    "email": "ankamsaiteja27@gmail.com",
+    "root": "C:/Users/ankam/OneDrive/Desktop/Infosys/Infosys_text_summarizer",
+    "host": "bunny",
+    "username": "ankam",
+    "executable": "C:\\Users\\ankam\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\python.exe",
+    "cpu_count": 6,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 3301.0,
+        "min": 0.0,
+        "max": 3301.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3301.0,
+            "min": 0.0,
+            "max": 3301.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 476.04784774780273,
+            "used": 265.2328910827637
+        }
+    },
+    "memory": {
+        "total": 7.343070983886719
+    }
+}
