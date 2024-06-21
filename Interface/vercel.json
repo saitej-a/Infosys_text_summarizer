@@ -1,7 +1,7 @@
 {
     "builds": [
       {
-        "src": "Interface/Interface/wsgi.py",
+        "src": "Interface/wsgi.py",
         "use": "@vercel/python",
         "config":{
             "runtime":"python3.8"
@@ -11,7 +11,7 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "Interface/Interface/wsgi.py"
+        "dest": "Interface/wsgi.py"
       }
     ]
 }
