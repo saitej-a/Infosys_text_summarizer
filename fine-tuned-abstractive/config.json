@@ -1,5 +1,5 @@
 {
-  "_name_or_path": "t5-small",
+  "_name_or_path": "/content/drive/MyDrive/Files/fine-tuned-abstractive",
   "architectures": [
     "T5ForConditionalGeneration"
   ],
