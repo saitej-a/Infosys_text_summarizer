@@ -1,83 +1,114 @@
-# Infosys-Text-Summarization
-This is the project about Text summarization. We are building model which converts larger texts into smaller summary likely heading
-
-# Step 1
-## Finding the Suitable Dataset: 
-
-https://cs.nyu.edu/~kcho/DMQA/
-This dataset contains the documents and accompanying questions from the news articles of CNN and from Daily Mail. There are approximately 90k documents and 380k questions in CNN.There are approximately 197k documents and 879k questions in DM.
-
-
 ## Initial design
 ![Initial Design](<Initial Design.jpeg>)
 
-## Dataset
-
-We reduced the data into 40mb (1000 records) which will be also useful when we are training the pre-trained models
-
-![Plot of dataset](<output.png>)
 
 
 
-Firstly i would like to develop extractive model
-for this extractive model i want to use pre-trained BERT model as the base model ,it is the advanced model for text extraction
-and iam gonna feed dataset into the custom model based on Bert model
-for this custom model we use bert tokeniser which is developed by the google
+# Report on Text Summarizer Model Building
 
-## Changing the model
+## Introduction
 
-we changed the model from BERT to T5-small Because we faced so many problems while training the model or fine-tuning the model.
- We almost spent 4 days on it to resolve the errors but we are couldn't solve it, i don't know why!
+In this project, we aimed to build both extractive and abstractive text summarization models. The goal was to create models that can generate concise summaries of long text documents, significantly enhancing information consumption by reducing the time needed to understand large texts. Text summarization is a crucial task in natural language processing (NLP), with applications ranging from creating news digests to summarizing academic papers and reports.
 
-## T5-small 
+## Types of Summarization
 
-The T5-small model is a versatile and efficient variant of the T5 model family, suitable for a wide range of NLP tasks while being resource-friendly. Its smaller size allows for faster processing and deployment in resource-constrained environments, making it an excellent choice for many practical applications where speed and efficiency are prioritized over maximum performance.
+### Extractive Summarization
 
-The T5-small model is a smaller version of the T5 (Text-to-Text Transfer Transformer) model, developed by Google Research. T5 is designed to treat all NLP tasks as text-to-text problems, allowing it to use the same model, objective, training procedure, and decoding process for various tasks such as translation, summarization, and question answering.
+Extractive summarization involves selecting significant sentences, phrases, or sections directly from the source text and concatenating them to form a summary. This method retains the original wording and meaning of the text, making it simpler to implement as it does not require generating new text. The primary challenge in extractive summarization is identifying the most relevant parts of the text that represent the overall content effectively.
 
- ### Key Features of T5-Small:
-#### Architecture:
+### Abstractive Summarization
 
-The T5-small model is based on the Transformer architecture, specifically the encoder-decoder structure used in sequence-to-sequence tasks.
-It has 60 million parameters, which is significantly fewer than the larger T5 models, making it more efficient and faster to run, though less powerful in terms of performance.
-#### Model Size:
+Abstractive summarization, on the other hand, generates new sentences that convey the most critical information from the source text. This method involves understanding the text contextually and rewriting it concisely. Abstractive summarization is more complex as it requires the model to comprehend and paraphrase the content, often resulting in more coherent and human-like summaries compared to extractive methods.
 
-The T5 family includes various sizes such as T5-small, T5-base, T5-large, T5-3B (3 billion parameters), and T5-11B (11 billion parameters). T5-small is the most compact and lightweight variant.
-#### Training:
+## Extractive Summarization
 
-T5 models are pre-trained on the C4 (Colossal Clean Crawled Corpus) dataset, a large collection of web pages, using a text-to-text framework. This means they are trained to convert any input text into a desired output text.
-The pre-training involves a span-corruption task, where random spans of text are replaced with a special mask token, and the model learns to predict the missing spans.
-#### Use Cases:
+### Model Selection and Dataset
 
-Despite its smaller size, T5-small can still be effectively fine-tuned for a variety of downstream tasks such as:
-Text classification
-Question answering
-Text summarization
-Translation
-Text generation
-It is particularly useful for scenarios where computational resources are limited or when a quick inference is required.
-#### Performance:
+Initially, we chose the `bert-base-uncased` model from Hugging Face's Transformers library for extractive summarization. BERT (Bidirectional Encoder Representations from Transformers) is known for its robust language understanding capabilities, making it suitable for tasks requiring deep comprehension of the text. (Source :- https://huggingface.co/docs/transformers/en/tasks/summarization )
 
-While T5-small offers the advantages of efficiency and speed, it may not match the performance of larger models on more complex tasks or datasets. However, it strikes a good balance between resource usage and performance for many practical applications.
+For training and fine-tuning this model, we selected the CNN/DailyMail dataset, a widely recognized dataset for summarization tasks. This dataset consists of news articles and their corresponding summaries, providing a substantial amount of data for training summarization models.
+
+- Here is the link to the Dataset : https://www.kaggle.com/datasets/endofnight17j03/cnn-dailymail
+ 
+### Preprocessing
+
+We used the `BertTokenizer` for tokenizing the input text. Tokenization involves splitting text into tokens, which are smaller units like words or subwords. This step is crucial for transforming the text data into a format that the BERT model can process. Proper tokenization ensures that the model can accurately interpret and learn from the input data.
+
+### Challenges
+
+Despite careful preprocessing, the model encountered errors during training. These errors persisted even after several attempts to troubleshoot and resolve them. After spending three days troubleshooting without success, we concluded that continuing with this model might not be the best approach. The errors could have been due to various factors such as data preprocessing issues, model configuration problems, or hardware limitations.
+
+### Model Transition
+
+Given the challenges with the `bert-base-uncased` model, we decided to switch to a different model. We chose the `t5-small` model, also from Hugging Face, which is known for its efficiency and performance even on smaller hardware setups. T5 (Text-To-Text Transfer Transformer) is a versatile model designed to handle various text-to-text tasks, including summarization.
+
+Using the `t5-small` tokenizer, we preprocessed the data again and trained the model. This time, the training process completed successfully, demonstrating the model's compatibility and robustness.
+
+### Performance Evaluation
+
+We evaluated the model using the ROUGE (Recall-Oriented Understudy for Gisting Evaluation) metric, which measures the quality of the summaries by comparing them to reference summaries. The ROUGE metric considers different aspects of the generated summary, such as the overlap of unigrams, bigrams, and longest common subsequences with the reference summary.
+
+- **ROUGE-1**: 0.5435 (measures unigram overlap)
+- **ROUGE-2**: 0.2868 (measures bigram overlap)
+- **ROUGE-L**: 0.4135 (measures the longest common subsequence)
+- **ROUGE-Lsum**: 0.4918 (measures the longest common subsequence for summaries)
+
+The scores indicated room for improvement, likely due to a limited number of training epochs and the nature of the CNN/DailyMail dataset, which often requires an abstractive summarization approach. The extractive summarization model performed adequately but could benefit from further fine-tuning and more extensive training.
+
+## Abstractive Summarization
+
+### Model and Dataset
+
+For the abstractive summarization task, we again used the `t5-small` model, given its suitability and our familiarity with it. Abstractive summarization involves generating new sentences, making it more complex and computationally demanding. We selected the XSum dataset for this task, which is tailored for abstractive summarization. The XSum dataset consists of single-sentence summaries of BBC news articles, providing a challenging and relevant dataset for our model.
+
+### Preprocessing and Training
+
+We preprocessed the data using the `t5-small` tokenizer and trained the model with the tokenized data. The preprocessing step involved converting the text into a format that the T5 model can understand and process. This includes tokenizing the input text and creating attention masks to handle the varying lengths of the input sequences.
+
+During training, we faced several challenges related to model performance. The initial fine-tuning attempts resulted in low ROUGE scores, indicating that the model's summaries were not accurately capturing the essence of the original text. To address this, we sought guidance from our mentor, Narendra.
+
+### Fine-Tuning Iterations
+
+As advised by Narendra, we fine-tuned the model multiple times to improve its performance. Fine-tuning is a critical step in training NLP models, where the pre-trained model is further trained on a specific dataset to adapt it to the desired task. This process involved adjusting the learning rate, batch size, and number of epochs to optimize the model's performance.
+
+### Performance Evaluation
+
+After several iterations of fine-tuning, the model's performance improved significantly, as measured by ROUGE scores:
 
 
-## Evaluating the model
-
-The ROUGE score is a powerful tool for evaluating the performance of text generation models. By providing various metrics to assess the overlap between generated and reference texts, it helps quantify how well a model performs in tasks like summarization and translation. Despite its limitations, ROUGE remains a crucial metric in the field of NLP.
-
-Here are the results of ROUGE
-
-rouge1: 0.5435...
-rouge2: 0.2868...
-rougeL: 0.4135...
-rougeLsum: 0.4918...
-
-Actually the score is not that bad. There are 2 reasons why my score is not very good
---> Used insufficient data to train the model because to process the training i don't have GPU in my computer
---> The model is not well tuned because i don't have enough time to tune the model
---> The dataset we used is CNN/Dailymails, In this dataset most of the summaries (highlights) is in the abstractive format we used thr extractive method to train
-
-### Results
 
 
-![ROUGE Score](<output2.png>)
+- **ROUGE-1**: Precision=0.4983, Recall=0.2490, F1=0.4508
+- **ROUGE-2**: Precision=0.2162, Recall=0.2734, F1=0.2289
+- **ROUGE-L**: Precision=0.5596, Recall=0.6520, F1=0.6181
+- **ROUGE-Lsum**: Precision=0.4580, Recall=0.4028, F1=0.4185
+
+These scores were deemed acceptable for the abstractive summarization task, given the variability and complexity of generating new sentences. The model demonstrated a good balance between precision and recall, indicating its ability to generate coherent and relevant summaries.
+
+## User Interface Development
+
+To make the models accessible, we developed a user interface using Django, a high-level Python web framework. Our choice of Django was influenced by prior experience from a previous internship, where we worked as Django developers.
+
+### Interface Features
+
+![interface](<interface look.png>)
+
+The interface was designed to be minimalistic yet functional, ensuring ease of use for end-users. Key features include:
+
+- **Copy-Paste Buttons**: These buttons allow users to quickly copy the input text and paste it into the summarization tool, enhancing usability.
+![copy](<paste buton.png>) ![copy](<Copy button.png>)
+- **Dropdown Menu**: A dropdown menu lets users select the type of summarization (extractive or abstractive), providing flexibility based on their needs.
+![dropdown](<Dropdown.png>) ![dropdown](<dropdown open.png>)
+- **Range Bar**: A range bar allows users to adjust the length of the summary, offering control over the level of detail in the generated summary.
+![range](<rangebar.png>)
+The user interface ensures that the summarization models are user-friendly and accessible to a broad audience.
+
+## Deployment
+
+The final step involves deploying the application to the web. Deployment is crucial to make the summarization tool available to users beyond the development environment. We plan to host the application on a web server, ensuring that it is accessible from anywhere with an internet connection. This step includes setting up the server, configuring the environment, and ensuring the application runs smoothly under different conditions.
+
+## Conclusion
+
+This project successfully explored and implemented both extractive and abstractive summarization models. Despite initial challenges with the `bert-base-uncased` model, transitioning to the `t5-small` model enabled us to build effective summarization systems. The development of a user-friendly interface further enhances the usability of these models, making text summarization accessible to a broader audience. The deployment phase will bring this tool into practical use, providing a valuable resource for users needing efficient text summarization. 
+
+By completing this project, we have gained valuable insights into the complexities of text summarization and the practical aspects of model training and deployment. This experience will undoubtedly contribute to future endeavors in the field of natural language processing and machine learning.
