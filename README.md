@@ -96,11 +96,18 @@ To make the models accessible, we developed a user interface using Django, a hig
 The interface was designed to be minimalistic yet functional, ensuring ease of use for end-users. Key features include:
 
 - **Copy-Paste Buttons**: These buttons allow users to quickly copy the input text and paste it into the summarization tool, enhancing usability.
+
 ![copy](<paste buton.png>) ![copy](<Copy button.png>)
+
 - **Dropdown Menu**: A dropdown menu lets users select the type of summarization (extractive or abstractive), providing flexibility based on their needs.
+
 ![dropdown](<Dropdown.png>) ![dropdown](<dropdown open.png>)
+
 - **Range Bar**: A range bar allows users to adjust the length of the summary, offering control over the level of detail in the generated summary.
+
 ![range](<rangebar.png>)
+
+
 The user interface ensures that the summarization models are user-friendly and accessible to a broad audience.
 
 ## Deployment
