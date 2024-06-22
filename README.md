@@ -61,6 +61,8 @@ The scores indicated room for improvement, likely due to a limited number of tra
 
 For the abstractive summarization task, we again used the `t5-small` model, given its suitability and our familiarity with it. Abstractive summarization involves generating new sentences, making it more complex and computationally demanding. We selected the XSum dataset for this task, which is tailored for abstractive summarization. The XSum dataset consists of single-sentence summaries of BBC news articles, providing a challenging and relevant dataset for our model.
 
+- Here is the link : https://huggingface.co/datasets/shalinik/xsum
+
 ### Preprocessing and Training
 
 We preprocessed the data using the `t5-small` tokenizer and trained the model with the tokenized data. The preprocessing step involved converting the text into a format that the T5 model can understand and process. This includes tokenizing the input text and creating attention masks to handle the varying lengths of the input sequences.
