@@ -19,7 +19,7 @@
             <div style="display: flex;justify-content: center;align-items: center;">
                 <label for="text" class="form-label" style="color:grey; width: 300px;flex: 1.7;">Enter Text:</label>
                 <div style="display: inline-block;flex: 1;justify-content: center;" >
-                <input type="range" class="form-range" min="0" max="10" id="customRange2" name="range" style="flex: 1">
+                <input type="range" class="form-range" min="0" max="10" id="customRange2" onchange="change()" name="max_length" value="10" style="flex: 1">
                 </div>
                 <div>
                 <div class="dropdown" style="margin-left: 50px;flex: 1;">
@@ -42,6 +42,7 @@
                 <form id="myform" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="method" value="0" id="textmethod">
+                    <input type="hidden" name="range" value="10" id="range">
                     <div class="form-group">
                         <div style="position: relative;">
                         <textarea name="article" class="form-control" id="text" name="text" rows="15" style="background-color: rgb(39, 39, 39);color: rgb(255, 255, 255);" ></textarea>
@@ -119,5 +120,10 @@
 
     navigator.clipboard.readText().then(text => {textarea.value=text});
   })
+  function change(){
+    const range=document.getElementById('customRange2');
+    const input_range=document.getElementById('range');
+    input_range.value=range.value
+  }
 </script></body>
 </html>

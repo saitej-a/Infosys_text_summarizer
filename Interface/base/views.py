@@ -5,13 +5,13 @@ from django.http import JsonResponse
 def index(request):
     
     if request.method=='POST':
-        
         text=request.POST.get('article')
+        range_inp=request.POST.get('range')
         if request.POST.get('method')=='1':
-            summary=generate.ex_summarize(text)[0]['summary_text']
+            summary=generate.Extract(text,int(range_inp)*6)
             return JsonResponse({'summary':summary})
         elif request.POST.get('method')=='0':
             
-            summary=generate.ab_summarize(text)[0]['summary_text']
+            summary=generate.Abstract(text,int(range_inp)*6)
             return JsonResponse({'summary':summary})
     return render(request,'index.html')

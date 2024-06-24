@@ -17,9 +17,11 @@ ab_local_model=AutoModelForSeq2SeqLM.from_pretrained(ab_model_name_or_path)
 
 
 from transformers import pipeline
-ex_summarize=pipeline('summarization',model=ex_local_model,tokenizer=ex_local_tokenizer)
-ab_summarize=pipeline('summarization',model=ab_local_model,tokenizer=ab_local_tokenizer)
-def Extract(article:str):
+
+
+def Extract(article:str,max_length=200):
+    ex_summarize=pipeline('summarization',model=ex_local_model,tokenizer=ex_local_tokenizer,max_length=max_length)
     return ex_summarize(article)[0]['summary_text']
-def Abstract(article:str):
+def Abstract(article:str,max_length=200):
+    ab_summarize=pipeline('summarization',model=ab_local_model,tokenizer=ab_local_tokenizer,max_length=max_length)
     return ab_summarize(article)[0]['summary_text']
