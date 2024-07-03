@@ -4,14 +4,14 @@ import os
 script_dir = os.path.dirname(__file__)
 
 
-ex_model_name_or_path = os.path.join(script_dir, '..',  'fine-tuned-extractive')
+ex_model_name_or_path = os.path.join(script_dir, '..','..',  'fine-tuned-extractive')
 
 from transformers import AutoTokenizer,AutoModelForSeq2SeqLM
 ex_local_tokenizer=AutoTokenizer.from_pretrained(ex_model_name_or_path)
 ex_local_model=AutoModelForSeq2SeqLM.from_pretrained(ex_model_name_or_path)
 
 
-ab_model_name_or_path=os.path.join(script_dir, '..',  'fine-tuned-abstractive')
+ab_model_name_or_path=os.path.join(script_dir, '..','..',  'fine-tuned-abstractive')
 ab_local_tokenizer=AutoTokenizer.from_pretrained(ab_model_name_or_path)
 ab_local_model=AutoModelForSeq2SeqLM.from_pretrained(ab_model_name_or_path)
 
