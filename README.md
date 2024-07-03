@@ -1,9 +1,6 @@
 ## Initial design
 ![Initial Design](<Initial Design.jpeg>)
 
-
-
-
 # Report on Text Summarizer Model Building
 
 ## Introduction
@@ -24,12 +21,12 @@ Abstractive summarization, on the other hand, generates new sentences that conve
 
 ### Model Selection and Dataset
 
-Initially, we chose the `bert-base-uncased` model from Hugging Face's Transformers library for extractive summarization. BERT (Bidirectional Encoder Representations from Transformers) is known for its robust language understanding capabilities, making it suitable for tasks requiring deep comprehension of the text. (Source :- https://huggingface.co/docs/transformers/en/tasks/summarization )
+Initially, we chose the `bert-base-uncased` model from Hugging Face's Transformers library for extractive summarization. BERT (Bidirectional Encoder Representations from Transformers) is known for its robust language understanding capabilities, making it suitable for tasks requiring deep comprehension of the text. (Source: [Hugging Face](https://huggingface.co/docs/transformers/en/tasks/summarization))
 
 For training and fine-tuning this model, we selected the CNN/DailyMail dataset, a widely recognized dataset for summarization tasks. This dataset consists of news articles and their corresponding summaries, providing a substantial amount of data for training summarization models.
 
-- Here is the link to the Dataset : https://www.kaggle.com/datasets/endofnight17j03/cnn-dailymail
- 
+- Here is the link to the Dataset: [CNN/DailyMail Dataset](https://www.kaggle.com/datasets/endofnight17j03/cnn-dailymail)
+
 ### Preprocessing
 
 We used the `BertTokenizer` for tokenizing the input text. Tokenization involves splitting text into tokens, which are smaller units like words or subwords. This step is crucial for transforming the text data into a format that the BERT model can process. Proper tokenization ensures that the model can accurately interpret and learn from the input data.
@@ -61,7 +58,7 @@ The scores indicated room for improvement, likely due to a limited number of tra
 
 For the abstractive summarization task, we again used the `t5-small` model, given its suitability and our familiarity with it. Abstractive summarization involves generating new sentences, making it more complex and computationally demanding. We selected the XSum dataset for this task, which is tailored for abstractive summarization. The XSum dataset consists of single-sentence summaries of BBC news articles, providing a challenging and relevant dataset for our model.
 
-- Here is the link : https://huggingface.co/datasets/shalinik/xsum
+- Here is the link: [XSum Dataset](https://huggingface.co/datasets/shalinik/xsum)
 
 ### Preprocessing and Training
 
@@ -76,9 +73,6 @@ As advised by Narendra, we fine-tuned the model multiple times to improve its pe
 ### Performance Evaluation
 
 After several iterations of fine-tuning, the model's performance improved significantly, as measured by ROUGE scores:
-
-
-
 
 - **ROUGE-1**: Precision=0.4983, Recall=0.2490, F1=0.4508
 - **ROUGE-2**: Precision=0.2162, Recall=0.2734, F1=0.2289
@@ -109,15 +103,14 @@ The interface was designed to be minimalistic yet functional, ensuring ease of u
 
 ![range](<rangebar.png>)
 
-
 The user interface ensures that the summarization models are user-friendly and accessible to a broad audience.
 
 ## Deployment
 
-The final step involves deploying the application to the web. Deployment is crucial to make the summarization tool available to users beyond the development environment. We plan to host the application on a web server, ensuring that it is accessible from anywhere with an internet connection. This step includes setting up the server, configuring the environment, and ensuring the application runs smoothly under different conditions.
+The final step involves deploying the application to the web. Deployment is crucial to make the summarization tool available to users beyond the development environment. We have successfully deployed the application on an AWS EC2 instance, making it accessible via the URL: [http://ec2-54-166-136-40.compute-1.amazonaws.com:8000/](http://ec2-54-166-136-40.compute-1.amazonaws.com:8000/). This step included setting up the server, configuring the environment, and ensuring the application runs smoothly under different conditions.
 
 ## Conclusion
 
-This project successfully explored and implemented both extractive and abstractive summarization models. Despite initial challenges with the `bert-base-uncased` model, transitioning to the `t5-small` model enabled us to build effective summarization systems. The development of a user-friendly interface further enhances the usability of these models, making text summarization accessible to a broader audience. The deployment phase will bring this tool into practical use, providing a valuable resource for users needing efficient text summarization. 
+This project successfully explored and implemented both extractive and abstractive summarization models. Despite initial challenges with the `bert-base-uncased` model, transitioning to the `t5-small` model enabled us to build effective summarization systems. The development of a user-friendly interface further enhances the usability of these models, making text summarization accessible to a broader audience. The deployment phase will bring this tool into practical use, providing a valuable resource for users needing efficient text summarization.
 
 By completing this project, we have gained valuable insights into the complexities of text summarization and the practical aspects of model training and deployment. This experience will undoubtedly contribute to future endeavors in the field of natural language processing and machine learning.
