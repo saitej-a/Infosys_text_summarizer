@@ -9,6 +9,29 @@
         .hidden{
             display: none;
         }
+        .dropdown{
+            margin-left: 50px;
+            flex: 1;
+        }
+        @media(max-width:768px) {
+            .form-label{
+                flex: 1;
+                display: none;
+            }
+            .rangeclass{
+                flex: 2;
+            }
+            .dropdown{
+                margin-left: 10px;
+            }
+            #dropdown{
+                max-width: 120px;
+            }
+            #generate-btn{
+                margin-bottom: 30px;
+            }
+        }
+        
     </style>
 </head>
 <body style="background-color: rgb(39, 39, 39);">
@@ -18,11 +41,11 @@
         <div class="row justify-content-center"><h1 class="text-center" style="color: rgb(241, 241, 241);">Text Summarization</h1>
             <div style="display: flex;justify-content: center;align-items: center;">
                 <label for="text" class="form-label" style="color:grey; width: 300px;flex: 1.7;">Enter Text:</label>
-                <div style="display: inline-block;flex: 1;justify-content: center;" >
-                <input type="range" class="form-range" min="0" max="10" id="customRange2" onchange="change()" name="max_length" value="10" style="flex: 1">
+                <div style="display: inline-block;flex: 1;justify-content: center;" class="rangeclass" >
+                <input type="range" class="form-range" min="0" max="10" id="customRange2" onchange="change()" name="max_length" value="10" style="flex: 2">
                 </div>
                 <div>
-                <div class="dropdown" style="margin-left: 50px;flex: 1;">
+                <div class="dropdown">
                     <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdown" style="width: 200px;">
                       Abstractive
                     </button>
